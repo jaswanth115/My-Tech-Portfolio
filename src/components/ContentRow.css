@@ -1,0 +1,36 @@
+.row {
+    color: white;
+    margin-left: 4%;
+    margin-bottom: 2rem;
+}
+
+.row__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #e5e5e5;
+    transition: color 0.3s;
+}
+
+.row__title:hover {
+    color: white;
+}
+
+.row__posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 20px;
+    margin-left: -20px;
+    /* Offset padding */
+}
+
+/* Hide scrollbar for clean look */
+.row__posters::-webkit-scrollbar {
+    display: none;
+}
+
+.row__posters {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
