@@ -27,7 +27,9 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Hero />
+      <div id="Home">
+        <Hero />
+      </div>
       
       <div style={{ marginTop: '-150px', position: 'relative', zIndex: 20 }}> {/* Pull up to overlap hero fade */}
         <ContentRow 
@@ -53,9 +55,9 @@ function App() {
       <footer style={{ padding: '50px', textAlign: 'center', color: '#666', fontSize: '0.9rem' }}>
         <p>© 2025 Jaswanth Reddy Veera. Built with React & Vite.</p>
         <div style={{ marginTop: '10px' }}>
-             <a href="mailto:jaswanthreddy.2019@gmail.com" style={{ margin: '0 10px' }}>Email</a>
-             <a href="#" style={{ margin: '0 10px' }}>LinkedIn</a>
-             <a href="#" style={{ margin: '0 10px' }}>GitHub</a>
+             <a href="mailto:jaswanthreddy.2019@gmail.com" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px', color: '#666', transition: 'color 0.3s' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='#666'}>Email</a>
+             <a href="https://www.linkedin.com/in/jaswanth-reddy-veera-73235b194?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B5hIzuc7FR%2F%2BBTcVjICBqlA%3D%3D" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px', color: '#666', transition: 'color 0.3s' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='#666'}>LinkedIn</a>
+             <a href="https://github.com/jaswanth115" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px', color: '#666', transition: 'color 0.3s' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='#666'}>GitHub</a>
         </div>
       </footer>
     </div>

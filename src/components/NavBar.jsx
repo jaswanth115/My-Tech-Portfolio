@@ -51,7 +51,21 @@ const NavBar = () => {
 
             <ul style={{ display: 'flex', gap: '20px', fontSize: '0.9rem' }}>
                 {['Home', 'Experience', 'Projects', 'Skills'].map((item) => (
-                    <li key={item} style={{ cursor: 'pointer', color: '#e5e5e5' }}>{item}</li>
+                    <li key={item}>
+                        <a 
+                            href={`#${item}`} 
+                            style={{ 
+                                cursor: 'pointer', 
+                                color: '#e5e5e5', 
+                                textDecoration: 'none',
+                                transition: 'color 0.3s'
+                            }}
+                            onMouseEnter={(e) => e.target.style.color = 'white'}
+                            onMouseLeave={(e) => e.target.style.color = '#e5e5e5'}
+                        >
+                            {item}
+                        </a>
+                    </li>
                 ))}
             </ul>
         </nav>

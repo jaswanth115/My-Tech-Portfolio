@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const ContentRow = ({ title, data, Component, isLargeRow }) => {
     return (
-        <div className="row">
+        <div className="row" id={title} style={{ scrollMarginTop: '100px' }}>
             <h2 className="row__title">{title}</h2>
             
             <div className="row__posters">
