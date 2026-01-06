@@ -3,7 +3,8 @@ import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import ContentRow from './components/ContentRow';
 import ProjectCard from './components/ProjectCard';
-import { projects, experience, skills } from './data/portfolio';
+import useGitHubRepos from './hooks/useGitHubRepos';
+import { experience, education, languages, webSkills, tools, practices } from './data/portfolio';
 
 // Simple Skill Card
 const SkillCard = ({ item }) => (
@@ -19,11 +20,13 @@ const SkillCard = ({ item }) => (
         borderRadius: '8px'
     }}>
         <img src={item.img} alt={item.title} style={{ width: '48px', height: '48px', marginBottom: '10px' }} />
-        <span style={{ fontSize: '0.9rem', color: '#ddd' }}>{item.title}</span>
+        <span style={{ fontSize: '0.9rem', color: '#ddd', textAlign: 'center' }}>{item.title}</span>
     </div>
 );
 
 function App() {
+  const { repos } = useGitHubRepos('jaswanth115');
+
   return (
     <div className="App">
       <NavBar />
@@ -34,7 +37,7 @@ function App() {
       <div style={{ marginTop: '-150px', position: 'relative', zIndex: 20 }}> {/* Pull up to overlap hero fade */}
         <ContentRow 
             title="Projects" 
-            data={projects} 
+            data={repos} 
             Component={ProjectCard} 
             isLargeRow={true} 
         />
@@ -45,11 +48,37 @@ function App() {
             Component={ProjectCard} 
         />
         
-        <ContentRow 
-            title="Skills" 
-            data={skills} 
-            Component={SkillCard} 
-        />
+        <div id="Education">
+            <ContentRow 
+                title="Education" 
+                data={education} 
+                Component={ProjectCard} 
+            />
+        </div>
+        
+        <div id="Skills">
+            <h2 style={{ paddingLeft: '4%', marginBottom: '1rem', color: 'white', fontSize: '2rem', fontWeight: 'bold' }}>Skills</h2>
+            <ContentRow 
+                title="Programming Languages" 
+                data={languages} 
+                Component={SkillCard} 
+            />
+            <ContentRow 
+                title="Web Development" 
+                data={webSkills} 
+                Component={SkillCard} 
+            />
+            <ContentRow 
+                title="Database & Tools" 
+                data={tools} 
+                Component={SkillCard} 
+            />
+            <ContentRow 
+                title="Practices" 
+                data={practices} 
+                Component={SkillCard} 
+            />
+        </div>
       </div>
 
       <footer style={{ padding: '50px', textAlign: 'center', color: '#666', fontSize: '0.9rem' }}>

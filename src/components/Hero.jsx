@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Github, Linkedin } from 'lucide-react';
 
 const Hero = () => {
     return (
@@ -12,7 +13,7 @@ const Hero = () => {
                 alignItems: 'center',
                 padding: '0 4%',
                 // Cinematic background
-                background: 'linear-gradient(to top, #141414 10%, transparent 90%), url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop") no-repeat center center/cover'
+                background: 'linear-gradient(to top, #141414 10%, transparent 90%), url("https://www.mysuitcasejourneys.com/wp-content/uploads/2022/11/best-place-to-view-golden-gate-bridge-1440x960.jpg") no-repeat center center/cover'
             }}
         >
             <div style={{ maxWidth: '600px', zIndex: 10 }}>
@@ -27,7 +28,7 @@ const Hero = () => {
                         lineHeight: '1.2'
                     }}
                 >
-                    JASWANTH REDDY VEERA
+                    Hi! I'm JASWANTH REDDY VEERA
                 </motion.h1>
 
                 <motion.h2
@@ -41,7 +42,7 @@ const Hero = () => {
                         color: '#fff'
                     }}
                 >
-                    Full Stack Engineer | React & Python Specialist
+                    Full Stack Engineer | MERN Stack | Python
                 </motion.h2>
 
                 <motion.p
@@ -58,14 +59,14 @@ const Hero = () => {
                      }}
                 >
                     Transforms complex requirements into high-performance web applications. 
-                    Masters Degree in Computer Science from UT Arlington.
+                    Masters Degree in Computer Science from University Of Texas At Arlington.
                 </motion.p>
 
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    style={{ display: 'flex', gap: '1rem' }}
+                    style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}
                 >
                     <button 
                         style={{
@@ -73,9 +74,9 @@ const Hero = () => {
                             fontSize: '1.1rem',
                             fontWeight: 'bold',
                             borderRadius: '4px',
-                            border: 'none',
-                            backgroundColor: '#fff',
-                            color: '#141414',
+                            border: '1px solid #333',
+                            backgroundColor: '#000',
+                            color: '#fff',
                             cursor: 'pointer',
                             display: 'flex',
                             alignItems: 'center',
@@ -85,20 +86,52 @@ const Hero = () => {
                     >
                         <span>▶</span> Resume
                     </button>
-                    <button 
-                        style={{
-                            padding: '0.8rem 2rem',
-                            fontSize: '1.1rem',
-                            fontWeight: 'bold',
-                            borderRadius: '4px',
-                            border: 'none',
-                            backgroundColor: 'rgba(109, 109, 110, 0.7)',
-                            color: '#fff',
-                            cursor: 'pointer'
-                        }}
-                    >
-                        More Info
-                    </button>
+
+                    {/* Profiles Section */}
+                    <div style={{ display: 'flex', gap: '10px', marginLeft: '10px' }}>
+                        <button
+                            title="GitHub"
+                            style={{
+                                width: '45px',
+                                height: '45px',
+                                borderRadius: '50%',
+                                border: '1px solid #333',
+                                backgroundColor: '#000',
+                                color: '#fff',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                transition: 'transform 0.2s'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
+                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                            onClick={() => window.open('https://github.com/jaswanth115', '_blank')}
+                        >
+                            <Github size={20} />
+                        </button>
+                        <button
+                            title="LinkedIn"
+                            style={{
+                                width: '45px',
+                                height: '45px',
+                                borderRadius: '50%',
+                                border: '1px solid #333',
+                                backgroundColor: '#000',
+                                color: '#fff',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                transition: 'transform 0.2s'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
+                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                            onClick={() => window.open('https://www.linkedin.com/in/jaswanth-reddy-veera-73235b194', '_blank')}
+                        >
+                            <Linkedin size={20} />
+                        </button>
+                    </div>
                 </motion.div>
             </div>
         </header>

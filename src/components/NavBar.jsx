@@ -46,11 +46,11 @@ const NavBar = () => {
                     fontFamily: 'Bebas Neue, sans-serif' // Or fallback
                 }}
             >
-                JASWANTH
+                Software Engineer
             </motion.div>
 
             <ul style={{ display: 'flex', gap: '20px', fontSize: '0.9rem' }}>
-                {['Home', 'Experience', 'Projects', 'Skills'].map((item) => (
+                {['Home', 'Experience', 'Projects', 'Education', 'Skills'].map((item) => (
                     <li key={item}>
                         <a 
                             href={`#${item}`} 
