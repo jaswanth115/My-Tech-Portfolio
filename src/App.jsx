@@ -9,18 +9,19 @@ import { experience, education, languages, webSkills, tools, practices } from '.
 // Simple Skill Card
 const SkillCard = ({ item }) => (
     <div style={{ 
-        minWidth: '120px', 
-        height: '120px', 
+        minWidth: 'clamp(100px, 25vw, 120px)', 
+        height: 'clamp(100px, 25vw, 120px)', 
         marginRight: '15px', 
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
         justifyContent: 'center',
         background: '#1f1f1f',
-        borderRadius: '8px'
+        borderRadius: '8px',
+        padding: '10px'
     }}>
-        <img src={item.img} alt={item.title} style={{ width: '48px', height: '48px', marginBottom: '10px' }} />
-        <span style={{ fontSize: '0.9rem', color: '#ddd', textAlign: 'center' }}>{item.title}</span>
+        <img src={item.img} alt={item.title} style={{ width: 'clamp(32px, 8vw, 48px)', height: 'clamp(32px, 8vw, 48px)', marginBottom: '10px' }} />
+        <span style={{ fontSize: 'clamp(0.75rem, 2vw, 0.9rem)', color: '#ddd', textAlign: 'center' }}>{item.title}</span>
     </div>
 );
 
@@ -34,7 +35,12 @@ function App() {
         <Hero />
       </div>
       
-      <div style={{ marginTop: '-150px', position: 'relative', zIndex: 20 }}> {/* Pull up to overlap hero fade */}
+      <div style={{ 
+          marginTop: 'clamp(-80px, -10vw, -150px)', 
+          position: 'relative', 
+          zIndex: 20,
+          paddingBottom: '4rem'
+      }}> {/* Pull up to overlap hero fade */}
         <ContentRow 
             title="Projects" 
             data={repos} 

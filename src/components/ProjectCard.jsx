@@ -58,16 +58,16 @@ const ProjectCard = ({ item, isLargeRow }) => {
 
     // Styling properties
     const cardStyles = {
-        minWidth: isLargeRow ? '200px' : '260px',
-        height: isLargeRow ? '280px' : '150px',
-        marginRight: '10px',
-        borderRadius: '8px', // Slightly more rounded for smaller cards
+        minWidth: isLargeRow ? 'clamp(160px, 40vw, 200px)' : 'clamp(220px, 60vw, 260px)',
+        height: isLargeRow ? 'clamp(220px, 50vw, 280px)' : 'clamp(130px, 30vw, 150px)',
+        marginRight: '15px',
+        borderRadius: '8px',
         position: 'relative',
         cursor: 'pointer',
         overflow: 'hidden',
         backgroundColor: '#222',
-        display: 'block', // Ensure anchor behaves like a block
-        textDecoration: 'none' // Remove default anchor underline
+        display: 'block',
+        textDecoration: 'none'
     };
 
     const containerProps = {
