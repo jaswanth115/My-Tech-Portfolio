@@ -92,7 +92,7 @@ const CatTracker = () => {
                 <path d="M 55 90 C 55 84, 65 84, 65 90 Z" fill="#1a1a1a" />
 
                 {/* HEAD GROUP (Moves nicely to track mouse) */}
-                <g style={{ transform: `translate(${headX}px, ${headY}px)`, transition: 'transform 0.1s ease-out' }}>
+                <g style={{ transform: `translate(${headX}px, ${headY}px)`, transition: 'transform 0.03s ease-out' }}>
                     {/* Ears & Inner Ears */}
                     <polygon points="30,28 17,5 45,18" fill="#111" />
                     <polygon points="70,28 83,5 55,18" fill="#111" />
@@ -117,7 +117,7 @@ const CatTracker = () => {
                         <ellipse cx="62" cy="43" rx="7" ry="9" fill="#facc15" />
 
                         {/* Pupils (Move the most for realistic focus) */}
-                        <g style={{ transform: `translate(${pupilX}px, ${pupilY}px)`, transition: 'transform 0.1s ease-out' }}>
+                        <g style={{ transform: `translate(${pupilX}px, ${pupilY}px)`, transition: 'transform 0.03s ease-out' }}>
                             {/* Realistic Cat Slit Pupils */}
                             <ellipse cx="38" cy="43" rx="2.5" ry="7" fill="#000" />
                             <ellipse cx="62" cy="43" rx="2.5" ry="7" fill="#000" />
