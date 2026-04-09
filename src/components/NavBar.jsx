@@ -132,7 +132,7 @@ const NavBar = () => {
                 .desktop-menu { display: none !important; }
 
                 @media (min-width: 768px) {
-                    .mobile-menu-toggle { display: none; }
+                    .mobile-menu-toggle { display: none !important; }
                     .desktop-menu { display: flex !important; }
                 }
             `}</style>
