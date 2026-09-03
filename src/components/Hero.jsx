@@ -348,7 +348,7 @@ const Hero = () => {
                                 position: 'relative',
                                 zIndex: 10 /* Ensures button is clickable beneath the cat's tail */
                             }}
-                            onClick={() => window.open(`${baseUrl}Jaswanth_Reddy_Veera_Resume.pdf?v=20260831`, '_blank')}
+                            onClick={() => window.open(`${baseUrl}Jaswanth_Reddy_Veera_Resume.pdf?v=${Date.now()}`, '_blank')}
                         >
                             <span>▶</span> Resume
                         </button>
