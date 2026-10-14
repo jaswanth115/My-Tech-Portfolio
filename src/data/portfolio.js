@@ -33,6 +33,14 @@ export const projects = [
 export const experience = [
     {
         id: 1,
+        title: "Testing Engineer",
+        subtitle: "Wiwynn | Present",
+        img: "https://www.wiwynn.com/hubfs/Open_Graph/open_graph_logo.png",
+        description: "Integrate, validate, and troubleshoot enterprise servers and rack-scale data center infrastructure. Configure and test CPUs, GPUs, memory, storage, and networking; run diagnostics and root-cause analysis with engineering and quality teams.",
+        tech: ["Servers", "Diagnostics", "Hardware"]
+    },
+    {
+        id: 2,
         title: "Software Engineer",
         subtitle: "EPAM Systems | July 2022 - Nov 2023",
         img: "https://mma.prnewswire.com/media/2223594/EPAM_Logo.jpg?p=facebook",
@@ -40,7 +48,7 @@ export const experience = [
         tech: ["React", "Java", "APIs"]
     },
     {
-        id: 2,
+        id: 3,
         title: "Software Engineer Intern",
         subtitle: "EPAM Systems | Jan 2022 - Jun 2022",
         img: "https://mma.prnewswire.com/media/2223594/EPAM_Logo.jpg?p=facebook",
@@ -48,7 +56,7 @@ export const experience = [
         tech: ["Angular", "JavaScript", "React"]
     },
     {
-        id: 3,
+        id: 4,
         title: "Web Developer Intern",
         subtitle: "Sparks Foundation | Jun 2021 - Jul 2021",
         img: "https://media.licdn.com/dms/image/v2/C560BAQFgHU3sTF4LfQ/company-logo_200_200/company-logo_200_200/0/1631365213896?e=2147483647&v=beta&t=9TJaIfOOSISboGyTfR4ajtkoD2OL1uFdBDOwXJuUPGc",

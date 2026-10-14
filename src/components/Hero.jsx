@@ -256,7 +256,7 @@ const Hero = () => {
                         textShadow: '0px 2px 8px rgba(0,0,0,0.8)'
                     }}
                 >
-                    Full Stack Engineer | MERN Stack | Python
+                    Testing Engineer at Wiwynn | Full Stack | Python
                 </motion.h2>
 
                 <motion.p
@@ -273,7 +273,8 @@ const Hero = () => {
                          textShadow: '0px 2px 6px rgba(0,0,0,0.8)'
                      }}
                 >
-                    Transforms complex requirements into high-performance web applications. 
+                    Currently validating enterprise server and rack-scale systems at Wiwynn.
+                    Also transforms complex requirements into high-performance web applications.
                     Masters Degree in Computer Science from University Of Texas At Arlington.
                 </motion.p>
 
