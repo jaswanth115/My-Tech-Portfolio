@@ -150,7 +150,7 @@ const Hero = () => {
                     width: 100%;
                     display: flex;
                     align-items: center;
-                    padding: var(--nav-height) var(--mobile-padding) 4rem;
+                    padding: 0 var(--mobile-padding) 4rem;
                     overflow: hidden;
                 }
 
@@ -161,10 +161,10 @@ const Hero = () => {
                     width: 100%;
                     height: 100%;
                     z-index: 1;
-                    /* Flipped horizontally as requested previously */
                     transform: scaleX(-1);
                     background: url("${baseUrl}sf-downtown.jpg") no-repeat center center;
-                    background-size: contain; 
+                    background-size: cover;
+                    background-position: center top;
                 }
 
                 /* A smooth gradient overlay that doesn't dim the full colors but elegantly fades the bottom edge into the dark app background */
@@ -197,12 +197,7 @@ const Hero = () => {
 
                 /* Premium Mobile Optimization */
                 @media (max-width: 768px) {
-                    .hero-header {
-                        padding-top: calc(var(--nav-height) + 2rem);
-                    }
                     .hero-bg {
-                        /* Switch to cover with top focus on mobile so it fills the screen dramatically */
-                        background-size: cover;
                         background-position: 70% top;
                     }
                     .hero-fade-overlay {

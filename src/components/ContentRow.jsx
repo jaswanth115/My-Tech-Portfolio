@@ -1,15 +1,14 @@
 import React from 'react';
 import './ContentRow.css';
-import { motion } from 'framer-motion';
 
-const ContentRow = ({ title, data, Component, isLargeRow }) => {
+const ContentRow = ({ title, data, Component, isLargeRow, expandable, sectionId }) => {
     return (
-        <div className="row" id={title} style={{ scrollMarginTop: '100px' }}>
+        <div className="row" id={sectionId || title} style={{ scrollMarginTop: '100px' }}>
             <h2 className="row__title">{title}</h2>
             
             <div className="row__posters">
                 {data.map((item) => (
-                    <Component key={item.id} item={item} isLargeRow={isLargeRow} />
+                    <Component key={item.id} item={item} isLargeRow={isLargeRow} expandable={expandable} />
                 ))}
             </div>
         </div>

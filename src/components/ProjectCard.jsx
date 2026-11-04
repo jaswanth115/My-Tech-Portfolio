@@ -1,16 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useCallback, useRef, useState } from 'react';
+import { Maximize2 } from 'lucide-react';
+import DetailFlipModal from './DetailFlipModal';
 
-const ProjectCard = ({ item, isLargeRow }) => {
-    // Render icon if item.icon exists
+const ProjectCard = ({ item, isLargeRow, expandable }) => {
+    const [open, setOpen] = useState(false);
+    const pointerStart = useRef(null);
     const IconComponent = item.icon;
+    const handleClose = useCallback(() => setOpen(false), []);
 
-    // Content of the card
     const CardContent = (
         <>
             {IconComponent ? (
-                <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${item.gradient || 'from-gray-700 to-gray-900'}`}>
-                    <IconComponent size={48} color="white" strokeWidth={1.5} />
+                <div
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: item.iconBg || 'linear-gradient(160deg, #2a2a2a, #111)'
+                    }}
+                >
+                    <IconComponent
+                        size={isLargeRow ? 56 : 42}
+                        color={item.iconColor || '#fff'}
+                        strokeWidth={1.7}
+                    />
                 </div>
             ) : (
                 <img 
@@ -24,11 +39,15 @@ const ProjectCard = ({ item, isLargeRow }) => {
                     }} 
                 />
             )}
+
+            {expandable && (
+                <div className="detail-hint" aria-hidden="true">
+                    <Maximize2 size={12} />
+                </div>
+            )}
             
-            <motion.div 
+            <div 
                 className="info"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
                 style={{
                     position: 'absolute',
                     bottom: 0,
@@ -46,17 +65,15 @@ const ProjectCard = ({ item, isLargeRow }) => {
                 <p style={{ fontSize: '0.75rem', color: '#ccc' }}>{item.subtitle}</p>
                 <p style={{ fontSize: '0.65rem', color: '#aaa', marginTop: '4px', lineHeight: '1.2', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.description}</p>
                 
-                {/* Micro tech stack tags */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '5px' }}>
                     {item.tech && item.tech.slice(0, 3).map(t => (
                         <span key={t} style={{ fontSize: '0.55rem', border: '1px solid #666', padding: '1px 3px', borderRadius: '2px' }}>{t}</span>
                     ))}
                 </div>
-            </motion.div>
+            </div>
         </>
     );
 
-    // Styling properties
     const cardStyles = {
         minWidth: isLargeRow ? 'clamp(160px, 40vw, 200px)' : 'clamp(220px, 60vw, 260px)',
         height: isLargeRow ? 'clamp(220px, 50vw, 280px)' : 'clamp(130px, 30vw, 150px)',
@@ -67,34 +84,69 @@ const ProjectCard = ({ item, isLargeRow }) => {
         overflow: 'hidden',
         backgroundColor: '#222',
         display: 'block',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        color: 'inherit'
     };
 
-    const containerProps = {
-        className: `poster ${isLargeRow ? "posterLarge" : ""}`,
-        whileHover: { scale: 1.05, zIndex: 100 }, // Reduced scale effect for smaller cards
-        transition: { duration: 0.3 },
-        style: cardStyles
+    const className = `poster${isLargeRow ? ' posterLarge' : ''}${open ? ' is-open' : ''}`;
+
+    const wasDrag = (event) => {
+        const start = pointerStart.current;
+        if (!start) return false;
+        return Math.abs(event.clientX - start.x) > 10 || Math.abs(event.clientY - start.y) > 10;
     };
 
-    // If item.link exists, wrap in 'a' tag, else use 'div'
+    const handlePointerDown = (event) => {
+        pointerStart.current = { x: event.clientX, y: event.clientY };
+    };
+
+    const handleOpen = (event) => {
+        if (!expandable) return;
+        if (wasDrag(event)) return;
+        event.preventDefault();
+        setOpen(true);
+    };
+
+    const handleKeyDown = (event) => {
+        if (!expandable) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            setOpen(true);
+        }
+    };
+
     if (item.link) {
         return (
-            <motion.a 
+            <a 
                 href={item.link} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                {...containerProps}
+                className={className}
+                style={cardStyles}
             >
                 {CardContent}
-            </motion.a>
+            </a>
         );
     }
 
     return (
-        <motion.div {...containerProps}>
-            {CardContent}
-        </motion.div>
+        <>
+            <div
+                className={className}
+                style={cardStyles}
+                role={expandable ? 'button' : undefined}
+                tabIndex={expandable ? 0 : undefined}
+                aria-label={expandable ? `View details for ${item.title}` : undefined}
+                onPointerDown={expandable ? handlePointerDown : undefined}
+                onClick={expandable ? handleOpen : undefined}
+                onKeyDown={expandable ? handleKeyDown : undefined}
+            >
+                {CardContent}
+            </div>
+            {open && (
+                <DetailFlipModal item={item} onClose={handleClose} />
+            )}
+        </>
     );
 };
 

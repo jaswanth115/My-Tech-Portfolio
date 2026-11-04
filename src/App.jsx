@@ -42,23 +42,26 @@ function App() {
           paddingBottom: '4rem'
       }}> {/* Pull up to overlap hero fade */}
         <ContentRow 
-            title="Projects" 
+            title="My Repos" 
             data={repos} 
             Component={ProjectCard} 
-            isLargeRow={true} 
+            isLargeRow={true}
+            sectionId="Repos"
         />
         
         <ContentRow 
             title="Experience" 
             data={experience} 
-            Component={ProjectCard} 
+            Component={ProjectCard}
+            expandable
         />
         
         <div id="Education">
             <ContentRow 
                 title="Education" 
                 data={education} 
-                Component={ProjectCard} 
+                Component={ProjectCard}
+                expandable
             />
         </div>
         
@@ -87,7 +90,7 @@ function App() {
         </div>
       </div>
 
-      <footer style={{ padding: '50px', textAlign: 'center', color: '#666', fontSize: '0.9rem' }}>
+      <footer id="Contact" style={{ padding: '50px', textAlign: 'center', color: '#666', fontSize: '0.9rem', scrollMarginTop: '100px' }}>
         <p>© 2025 Jaswanth Reddy Veera. Built with React & Vite.</p>
         <div style={{ marginTop: '10px' }}>
              <a href="mailto:jaswanthreddy.2019@gmail.com" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px', color: '#666', transition: 'color 0.3s' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='#666'}>Email</a>

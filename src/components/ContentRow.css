@@ -45,3 +45,36 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.poster {
+    transform: scale(1);
+    transform-origin: center center;
+    transition: transform 0.22s ease;
+    z-index: 1;
+}
+
+.poster img,
+.poster .info,
+.poster .detail-hint {
+    pointer-events: none;
+}
+
+.poster .info {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.poster:hover {
+    transform: scale(1.05);
+    z-index: 4;
+}
+
+.poster:hover .info {
+    opacity: 1;
+}
+
+.poster.is-open,
+.poster.is-open:hover {
+    transform: scale(1);
+    z-index: 1;
+}

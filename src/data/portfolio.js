@@ -36,32 +36,54 @@ export const experience = [
         title: "Testing Engineer",
         subtitle: "Wiwynn | Present",
         img: "https://www.wiwynn.com/hubfs/Open_Graph/open_graph_logo.png",
-        description: "Integrate, validate, and troubleshoot enterprise servers and rack-scale data center infrastructure. Configure and test CPUs, GPUs, memory, storage, and networking; run diagnostics and root-cause analysis with engineering and quality teams.",
-        tech: ["Servers", "Diagnostics", "Hardware"]
+        description: "Enterprise server validation across CPU, GPU, memory, storage, and networking in rack-scale data center environments.",
+        highlights: [
+            "CPU, GPU, memory, and storage validation on enterprise server platforms",
+            "High-speed networking, NIC bring-up, and rack-scale interconnect testing",
+            "Hardware management, power distribution, and BMC-level diagnostics",
+            "System-level troubleshooting and root-cause analysis with engineering and quality teams"
+        ],
+        tech: ["Server Validation", "GPUs", "Networking", "Diagnostics", "Data Centers"]
     },
     {
         id: 2,
         title: "Software Engineer",
         subtitle: "EPAM Systems | July 2022 - Nov 2023",
         img: "https://mma.prnewswire.com/media/2223594/EPAM_Logo.jpg?p=facebook",
-        description: "Developed Maternity Leave Request Portal. Integrated external APIs and implemented notification systems. Collaborated in Agile.",
-        tech: ["React", "Java", "APIs"]
+        description: "Enterprise React and Java delivery with REST APIs, notifications, and Agile collaboration.",
+        highlights: [
+            "React for component-driven enterprise UIs and client-side state",
+            "Java services and REST API integration across backend workflows",
+            "Notification and event-driven messaging for production systems",
+            "Agile delivery with engineering, QA, and product stakeholders"
+        ],
+        tech: ["React", "Java", "REST APIs", "Agile"]
     },
     {
         id: 3,
         title: "Software Engineer Intern",
         subtitle: "EPAM Systems | Jan 2022 - Jun 2022",
         img: "https://mma.prnewswire.com/media/2223594/EPAM_Logo.jpg?p=facebook",
-        description: "Built User Management System with Angular. Optimized UI/UX and routing.",
-        tech: ["Angular", "JavaScript", "React"]
+        description: "Angular and JavaScript front-end architecture, routing, and UI performance.",
+        highlights: [
+            "Angular for modular UI architecture and client-side routing",
+            "JavaScript and React for interactive user-management flows",
+            "UI/UX refinement focused on navigation, accessibility, and load performance"
+        ],
+        tech: ["Angular", "JavaScript", "React", "UI Architecture"]
     },
     {
         id: 4,
         title: "Web Developer Intern",
         subtitle: "Sparks Foundation | Jun 2021 - Jul 2021",
         img: "https://media.licdn.com/dms/image/v2/C560BAQFgHU3sTF4LfQ/company-logo_200_200/company-logo_200_200/0/1631365213896?e=2147483647&v=beta&t=9TJaIfOOSISboGyTfR4ajtkoD2OL1uFdBDOwXJuUPGc",
-        description: "Built Bank Management System using Django. Created interactive financial dashboards.",
-        tech: ["Python", "Django", "MVC"]
+        description: "Python and Django on an MVC stack with data-driven dashboards.",
+        highlights: [
+            "Python and Django for server-rendered MVC web applications",
+            "Relational data models and transactional request handling",
+            "Interactive dashboards for operational and financial reporting"
+        ],
+        tech: ["Python", "Django", "MVC", "SQL"]
     }
 ];
 
@@ -109,7 +131,13 @@ export const education = [
         title: "Masters in Computer Science",
         subtitle: "University of Texas at Arlington | 2024 - 2025",
         img: "https://images.seeklogo.com/logo-png/45/1/uta-the-university-of-texas-at-arlington-logo-png_seeklogo-454092.png",
-        description: "Specializing in Software Engineering, Artificial Intelligence, and Database Systems. GPA: 3.6/4.0",
-        tech: ["AI", "Machine Learning", "Cloud Computing"]
+        description: "Graduate coursework in software engineering, AI/ML, databases, and cloud systems. GPA: 3.6/4.0",
+        highlights: [
+            "Software engineering: design patterns, system design, and production-quality application architecture",
+            "Artificial intelligence and machine learning: models, evaluation, and applied ML workflows",
+            "Database systems: relational modeling, query optimization, and data consistency",
+            "Cloud computing: scalable services, distributed systems, and deployment fundamentals"
+        ],
+        tech: ["Software Engineering", "AI / ML", "Databases", "Cloud Computing"]
     }
 ];

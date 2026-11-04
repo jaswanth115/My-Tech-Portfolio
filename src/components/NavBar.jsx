@@ -1,124 +1,81 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import './NavBar.css';
+
+const NAV_ITEMS = ['Home', 'Experience', 'Repos', 'Education', 'Skills', 'Contact'];
 
 const NavBar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [active, setActive] = useState('Home');
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
+        const onScroll = () => {
+            let current = 'Home';
+            NAV_ITEMS.forEach((id) => {
+                const section = document.getElementById(id);
+                if (section && section.getBoundingClientRect().top < 140) {
+                    current = id;
+                }
+            });
+            setActive(current);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    const navItems = ['Home', 'Experience', 'Projects', 'Education', 'Skills'];
+    const closeMobile = () => setIsMobileMenuOpen(false);
 
     return (
-        <nav 
-            style={{
-                position: 'fixed',
-                top: 0,
-                width: '100%',
-                height: 'var(--nav-height)',
-                padding: '0 var(--mobile-padding)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                zIndex: 100,
-                transition: 'background-color 0.3s ease-in-out',
-                backgroundColor: isScrolled || isMobileMenuOpen ? '#141414' : 'transparent',
-                backgroundImage: isScrolled || isMobileMenuOpen ? 'none' : 'linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0))'
-            }}
-        >
-            <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                style={{
-                    color: '#E50914',
-                    fontSize: 'clamp(1.2rem, 5vw, 1.8rem)',
-                    fontWeight: 'bold',
-                    letterSpacing: '1px',
-                    fontFamily: 'Bebas Neue, sans-serif'
-                }}
-            >
-                Software Engineer
-            </motion.div>
+        <header className="nav-wrap">
+            <nav className="nav-pill" aria-label="Primary">
+                <a className="nav-brand" href="#Home" onClick={closeMobile}>
+                    Software Engineer
+                </a>
 
-            {/* Desktop Menu */}
-            <ul style={{ 
-                display: 'none', 
-                gap: '20px', 
-                fontSize: '0.9rem'
-            }} className="desktop-menu">
-                {navItems.map((item) => (
-                    <li key={item}>
-                        <a 
-                            href={`#${item}`} 
-                            style={{ 
-                                cursor: 'pointer', 
-                                color: '#e5e5e5', 
-                                textDecoration: 'none',
-                                transition: 'color 0.3s'
-                            }}
-                            onMouseEnter={(e) => e.target.style.color = 'white'}
-                            onMouseLeave={(e) => e.target.style.color = '#e5e5e5'}
-                        >
-                            {item}
-                        </a>
-                    </li>
-                ))}
-            </ul>
+                <ul className="nav-links">
+                    {NAV_ITEMS.map((item) => (
+                        <li key={item}>
+                            <a
+                                href={`#${item}`}
+                                className={active === item ? 'is-active' : undefined}
+                            >
+                                {item}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
 
-            {/* Hamburger Toggle */}
-            <div 
-                style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
-                className="mobile-menu-toggle"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-                {isMobileMenuOpen ? <X color="white" size={28} /> : <Menu color="white" size={28} />}
-            </div>
+                <div className="nav-right">
+                    <button
+                        type="button"
+                        className="nav-menu-btn"
+                        onClick={() => setIsMobileMenuOpen((open) => !open)}
+                        aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                        aria-expanded={isMobileMenuOpen}
+                    >
+                        {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                    </button>
+                </div>
+            </nav>
 
-            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
+                        className="nav-mobile"
+                        initial={{ opacity: 0, y: -8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        style={{
-                            position: 'absolute',
-                            top: 'var(--nav-height)',
-                            left: 0,
-                            width: '100%',
-                            backgroundColor: '#141414',
-                            padding: '2rem var(--mobile-padding)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '1.5rem',
-                            borderBottom: '1px solid #333',
-                            zIndex: 99
-                        }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.18 }}
                     >
-                        {navItems.map((item) => (
-                            <a 
+                        {NAV_ITEMS.map((item) => (
+                            <a
                                 key={item}
-                                href={`#${item}`} 
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                style={{ 
-                                    color: 'white', 
-                                    fontSize: '1.2rem', 
-                                    fontWeight: '500',
-                                    textDecoration: 'none'
-                                }}
+                                href={`#${item}`}
+                                className={active === item ? 'is-active' : undefined}
+                                onClick={closeMobile}
                             >
                                 {item}
                             </a>
@@ -126,17 +83,7 @@ const NavBar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            <style>{`
-                .mobile-menu-toggle { display: block; }
-                .desktop-menu { display: none !important; }
-
-                @media (min-width: 768px) {
-                    .mobile-menu-toggle { display: none !important; }
-                    .desktop-menu { display: flex !important; }
-                }
-            `}</style>
-        </nav>
+        </header>
     );
 };
 
